@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TallerMecanico.Interfaces;
-using TallerMecanico.Models; // Ajusta a tu carpeta de modelos
+using TallerMecanico.Models;
 
 namespace TallerMecanico.Controllers;
 
@@ -8,7 +8,6 @@ namespace TallerMecanico.Controllers;
 [Route("api/[controller]")]
 public class ProductosController : ControllerBase
 {
-    // 1. Inyectas la interfaz IRepository en lugar del DbContext
     private readonly IRepository<Producto> _repository;
 
     public ProductosController(IRepository<Producto> repository)
