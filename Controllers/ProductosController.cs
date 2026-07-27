@@ -1,61 +1,55 @@
 using Microsoft.AspNetCore.Mvc;
 using TallerMecanico.Interfaces;
 using TallerMecanico.Models;
+using TallerMecanico.ViewModels; // <-- Asegúrate de incluir esta linea
 
-namespace TallerMecanico.Controllers;
-
-[ApiController]
-[Route("api/[controller]")]
-public class ProductosController : ControllerBase
+namespace TallerMecanico.Controllers
 {
-    private readonly IRepository<Producto> _repository;
-
-    public ProductosController(IRepository<Producto> repository)
+    public class ProductosController : Controller
     {
-        _repository = repository;
-    }
+        private readonly IRepository<Producto> _repository;
 
-    [HttpGet]
-    public async Task<IActionResult> GetAll()
-    {
-        var productos = await _repository.GetAllAsync();
-        return Ok(productos);
-    }
+        public ProductosController(IRepository<Producto> repository)
+        {
+            _repository = repository;
+        }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(int id)
-    {
-        var producto = await _repository.GetByIdAsync(id);
-        if (producto == null) return NotFound();
-        return Ok(producto);
-    }
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var productos = await _repository.GetAllAsync();
+            return View(productos);
+        }
 
-    [HttpPost]
-    public async Task<IActionResult> Create(Producto producto)
-    {
-        await _repository.AddAsync(producto);
-        await _repository.SaveChangesAsync();
-        return CreatedAtAction(nameof(GetById), new { id = producto.Id }, producto);
-    }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, Producto producto)
-    {
-        if (id != producto.Id) return BadRequest();
+        // POST: Recibe el ViewModel en lugar de la Entidad directa
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(ProductoCreateViewModel vm)
+        {
+            // 1. Validar el estado del Modelo (Servidor)
+            if (!ModelState.IsValid)
+            {
+                return View(vm); // Retorna a la vista mostrando los errores
+            }
 
-        _repository.Update(producto);
-        await _repository.SaveChangesAsync();
-        return NoContent();
-    }
+            // 2. Mapear de ViewModel a la Entidad real
+            var nuevoProducto = new Producto
+            {
+                Nombre = vm.Nombre,
+                Precio = vm.Precio
+            };
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(int id)
-    {
-        var producto = await _repository.GetByIdAsync(id);
-        if (producto == null) return NotFound();
+            // 3. Guardar en Base de Datos
+            await _repository.AddAsync(nuevoProducto);
+            await _repository.SaveChangesAsync();
 
-        _repository.Remove(producto);
-        await _repository.SaveChangesAsync();
-        return NoContent();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

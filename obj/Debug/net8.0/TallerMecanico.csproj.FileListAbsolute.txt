@@ -32,3 +32,8 @@
 /home/usuario/TallerMecanico/obj/Debug/net8.0/TallerMecanico.genruntimeconfig.cache
 /home/usuario/TallerMecanico/obj/Debug/net8.0/ref/TallerMecanico.dll
 /home/usuario/TallerMecanico/obj/Debug/net8.0/TallerMecanico.sourcelink.json
+/home/usuario/TallerMecanico/obj/Debug/net8.0/TallerMecanico.RazorAssemblyInfo.cache
+/home/usuario/TallerMecanico/obj/Debug/net8.0/TallerMecanico.RazorAssemblyInfo.cs
+/home/usuario/TallerMecanico/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll
+/home/usuario/TallerMecanico/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/home/usuario/TallerMecanico/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.InMemory.dll
