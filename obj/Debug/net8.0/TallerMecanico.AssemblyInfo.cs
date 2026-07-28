@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("TallerMecanico")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a5d3a40809d27c13caf625d924b93d22d1d545d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e89ded98bc6949ef76fad2d0e1a80b1e7dbbc8c")]
 [assembly: System.Reflection.AssemblyProductAttribute("TallerMecanico")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TallerMecanico")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,10 +1,12 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TallerMecanico.Interfaces;
 using TallerMecanico.Models;
-using TallerMecanico.ViewModels; // <-- Asegúrate de incluir esta linea
+using TallerMecanico.ViewModels;
 
 namespace TallerMecanico.Controllers
 {
+    [Authorize] //  Requiere iniciar sesión para acceder a cualquier vista de Productos
     public class ProductosController : Controller
     {
         private readonly IRepository<Producto> _repository;
@@ -22,6 +24,7 @@ namespace TallerMecanico.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")] //  Solo los usuarios con rol 'Admin' pueden acceder al formulario
         public IActionResult Create()
         {
             return View();
@@ -30,6 +33,7 @@ namespace TallerMecanico.Controllers
         // POST: Recibe el ViewModel en lugar de la Entidad directa
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")] //  Solo administradores pueden guardar productos
         public async Task<IActionResult> Create(ProductoCreateViewModel vm)
         {
             // 1. Validar el estado del Modelo (Servidor)
