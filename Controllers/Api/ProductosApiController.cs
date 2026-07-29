@@ -21,7 +21,7 @@ public async Task<ActionResult<IEnumerable<ProductoDto>>> GetProductos()
 {
     var productos = await _repository.GetAllAsync();
 
-    // Le pasamos 10 como Stock por defecto (p.Stock -> 10)
+    
     var dtos = productos.Select(p => new ProductoDto(p.Id, p.Nombre, p.Precio, 10));
 
     return Ok(dtos);

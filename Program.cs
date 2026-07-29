@@ -4,6 +4,7 @@ using TallerMecanico.Data;
 using TallerMecanico.Interfaces;
 using TallerMecanico.Repositories;
 using TallerMecanico.Models;
+using TallerMecanico.Services; // 👈 1. Importación del servicio de reportes
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,9 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+// 📊 REGISTRO DE SERVICIO DE REPORTES (Actividad 10)
+builder.Services.AddScoped<ReportService>(); // 👈 2. Inyección de dependencia de ReportService
 
 // 🛠️ CONFIGURACIÓN DE SWAGGER (Actividad 09)
 builder.Services.AddEndpointsApiExplorer();

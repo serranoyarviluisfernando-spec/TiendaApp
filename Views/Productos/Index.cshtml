@@ -59,7 +59,6 @@
         </table>
     </div>
 </div>
-
 <!-- Script directo sin depender de Layout o RenderSection -->
 <script>
     async function cargarInventarioAjax() {
@@ -79,7 +78,6 @@
                 contenedor.innerHTML = '<div class="alert alert-warning">No hay productos disponibles en la API.</div>';
                 return;
             }
-
             datos.forEach(p => {
                 contenedor.innerHTML += `
                     <div class="alert alert-secondary d-flex justify-content-between align-items-center mb-2">
