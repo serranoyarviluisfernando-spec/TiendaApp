@@ -22,7 +22,18 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
+// 🛠️ CONFIGURACIÓN DE SWAGGER (Actividad 09)
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
+
+// 🛠️ MIDDLEWARE DE SWAGGER
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(); // Permite acceder a /swagger
+}
 
 // 3. Data Seeding: Crear roles y asignar el rol Admin al usuario administrador
 using (var scope = app.Services.CreateScope())

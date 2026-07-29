@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TallerMecanico")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e89ded98bc6949ef76fad2d0e1a80b1e7dbbc8c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aee245608ba90424e3812f24cc41fb8036121f90")]
 [assembly: System.Reflection.AssemblyProductAttribute("TallerMecanico")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TallerMecanico")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
